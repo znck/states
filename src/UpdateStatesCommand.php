@@ -15,7 +15,7 @@ class UpdateStatesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'states:update';
+    protected $signature = 'states:update {--f|force : Force update}';
 
     /**
      * The console command description.
@@ -109,7 +109,7 @@ class UpdateStatesCommand extends Command
         $states = Collection::make($states);
         $hash = md5($states->toJson());
 
-        if ($hash === $this->hash) {
+        if (!$this->option('force') && $hash === $this->hash) {
             $this->line('No new state.');
             return false;
         }
@@ -147,8 +147,8 @@ class UpdateStatesCommand extends Command
                 DB::table($this->states)->insert($entries->toArray());
             }
 
-            foreach ($update->chunk(static::QUERY_LIMIT) as $entries) {
-                DB::table($this->states)->update($entries->toArray());
+            foreach ($update as $entries) {
+                DB::table($this->states)->where('id', $entries['id'])->update($entries);
             }
             $this->line("{$create->count()} states created. {$update->count()} states updated.");
             $this->files->put(storage_path(static::INSTALL_HISTORY), $hash);
