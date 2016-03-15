@@ -119,48 +119,40 @@ class UpdateStatesCommand extends Command
         $countryCodes = $states->pluck('country_id')->unique();
         $countryIDs = Collection::make(DB::table($this->countries)->whereIn('code', $countryCodes)->pluck('id', 'code'));
 
-        $states->map(
-            function ($item) use ($countryIDs) {
-                $item['country_id'] = $countryIDs->get($item['country_id']);
+        $states = $states->map(function ($item) use ($countryIDs) {
+            $item['country_id'] = $countryIDs->get($item['country_id']);
 
-                return $item;
-            }
-        );
+            return $item;
+        });
 
 
         $existingStateIDs = Collection::make(DB::table($this->states)->whereIn('code', $stateCodes)->pluck('id', 'code'));
-        $states->map(
-            function ($item) use ($existingStateIDs) {
-                if ($existingStateIDs->has($item['code'])) {
-                    $item['id'] = $existingStateIDs->get($item['code']);
-                }
-
-                return $item;
+        $states = $states->map(function ($item) use ($existingStateIDs) {
+            if ($existingStateIDs->has($item['code'])) {
+                $item['id'] = $existingStateIDs->get($item['code']);
             }
-        );
 
-        $states = $states->groupBy(
-            function ($item) {
-                return array_has($item, 'id') ? 'update' : 'create';
+            return $item;
+        });
+
+        $states = $states->groupBy(function ($item) {
+            return array_has($item, 'id') ? 'update' : 'create';
+        });
+
+        DB::transaction(function () use ($states, $hash) {
+            $create = Collection::make($states->get('create'));
+            $update = Collection::make($states->get('update'));
+
+            foreach ($create->chunk(static::QUERY_LIMIT) as $entries) {
+                DB::table($this->states)->insert($entries->toArray());
             }
-        );
 
-        DB::transaction(
-            function () use ($states, $hash) {
-                $create = Collection::make($states->get('create'));
-                $update = Collection::make($states->get('update'));
-
-                foreach ($create->chunk(static::QUERY_LIMIT) as $entries) {
-                    DB::table($this->states)->insert($entries->toArray());
-                }
-
-                foreach ($update->chunk(static::QUERY_LIMIT) as $entries) {
-                    DB::table($this->states)->update($entries->toArray());
-                }
-                $this->line("{$create->count()} states created. {$update->count()} states updated.");
-                $this->files->put(storage_path(static::INSTALL_HISTORY), $hash);
+            foreach ($update->chunk(static::QUERY_LIMIT) as $entries) {
+                DB::table($this->states)->update($entries->toArray());
             }
-        );
+            $this->line("{$create->count()} states created. {$update->count()} states updated.");
+            $this->files->put(storage_path(static::INSTALL_HISTORY), $hash);
+        });
     }
 
     private function last(array $data)
