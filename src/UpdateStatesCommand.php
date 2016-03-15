@@ -71,8 +71,12 @@ class UpdateStatesCommand extends Command
         $this->loader = new FileLoader($files, dirname(__DIR__).'/data');
 
         $config = $app->make('config');
-        $this->countries = $config->get('countries');
-        $this->states = $config->get('states');
+        $this->countries = $config->get('states.countries');
+        $this->states = $config->get('states.states');
+
+        if (!$this->files->isDirectory(dirname(storage_path(self::INSTALL_HISTORY)))) {
+            $this->files->makeDirectory(dirname(storage_path(self::INSTALL_HISTORY)), 0755, true);
+        }
 
         if ($this->files->exists(storage_path(self::INSTALL_HISTORY))) {
             $this->hash = $this->files->get(storage_path(self::INSTALL_HISTORY));
@@ -106,6 +110,7 @@ class UpdateStatesCommand extends Command
         $hash = md5($states->toJson());
 
         if ($hash === $this->hash) {
+            $this->line('No new state.');
             return false;
         }
 
@@ -146,12 +151,13 @@ class UpdateStatesCommand extends Command
                 $update = Collection::make($states->get('update'));
 
                 foreach ($create->chunk(static::QUERY_LIMIT) as $entries) {
-                    DB::table($this->states)->insert($entries);
+                    DB::table($this->states)->insert($entries->toArray());
                 }
 
                 foreach ($update->chunk(static::QUERY_LIMIT) as $entries) {
-                    DB::table($this->states)->update($entries);
+                    DB::table($this->states)->update($entries->toArray());
                 }
+                $this->line("{$create->count()} states created. {$update->count()} states updated.");
                 $this->files->put(storage_path(static::INSTALL_HISTORY), $hash);
             }
         );
