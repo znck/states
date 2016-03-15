@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1458039571">
+  <project timestamp="1458039571">
+    <package name="Znck\States">
+      <file name="/Volumes/Znck/Workspace/workbench/packages/znck/states/src/FileLoader.php">
+        <class name="FileLoader" namespace="Znck\States">
+          <metrics complexity="5" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
+        </class>
+        <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="29" type="stmt" count="8"/>
+        <line num="30" type="stmt" count="8"/>
+        <line num="31" type="stmt" count="8"/>
+        <line num="44" type="method" name="load" visibility="public" complexity="4" crap="4" count="8"/>
+        <line num="46" type="stmt" count="8"/>
+        <line num="47" type="stmt" count="8"/>
+        <line num="49" type="stmt" count="8"/>
+        <line num="50" type="stmt" count="6"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="5"/>
+        <line num="55" type="stmt" count="3"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="2"/>
+        <line num="58" type="stmt" count="2"/>
+        <metrics loc="61" ncloc="38" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
+      </file>
+      <file name="/Volumes/Znck/Workspace/workbench/packages/znck/states/src/Translator.php">
+        <class name="Translator" namespace="Znck\States">
+          <metrics complexity="9" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="24" coveredelements="24"/>
+        </class>
+        <line num="28" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="40" type="method" name="isLoaded" visibility="protected" complexity="1" crap="1" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="50" type="method" name="parseKey" visibility="protected" complexity="1" crap="1" count="2"/>
+        <line num="52" type="stmt" count="2"/>
+        <line num="61" type="method" name="get" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="63" type="stmt" count="2"/>
+        <line num="65" type="stmt" count="2"/>
+        <line num="67" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="2"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="82" type="method" name="getName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="91" type="method" name="load" visibility="protected" complexity="2" crap="2" count="2"/>
+        <line num="93" type="stmt" count="2"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="2"/>
+        <line num="98" type="stmt" count="2"/>
+        <line num="107" type="method" name="has" visibility="protected" complexity="1" crap="1" count="2"/>
+        <line num="109" type="stmt" count="2"/>
+        <metrics loc="111" ncloc="62" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="24" coveredelements="24"/>
+      </file>
+    </package>
+    <metrics files="2" loc="172" ncloc="100" classes="2" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="39" coveredelements="39"/>
+  </project>
+</coverage>
