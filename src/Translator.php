@@ -1,5 +1,4 @@
 <?php
-
 namespace Znck\States;
 
 use Illuminate\Support\Str;

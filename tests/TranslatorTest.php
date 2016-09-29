@@ -1,5 +1,4 @@
 <?php
-
 namespace Znck\Tests\States;
 
 use Illuminate\Filesystem\Filesystem;

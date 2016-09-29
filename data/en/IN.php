@@ -1,16 +1,12 @@
 <?php
 
 return [
-    'AN' => 'Andaman & Nicobar',
+    // States.
     'AP' => 'Andhra Pradesh',
     'AR' => 'Arunachal Pradesh',
     'AS' => 'Assam',
     'BR' => 'Bihar',
-    'CH' => 'Chandigarh',
     'CT' => 'Chhatisgarh',
-    'DN' => 'Dadra & Nagar Haveli',
-    'DD' => 'Daman & Diu',
-    'DL' => 'Delhi',
     'GA' => 'Goa',
     'GJ' => 'Gujarat',
     'HR' => 'Harayana',
@@ -19,7 +15,6 @@ return [
     'JH' => 'Jharkhand',
     'KA' => 'Karnataka',
     'KL' => 'Kerala',
-    'LD' => 'Lakshadweep',
     'MP' => 'Madhya Pradesh',
     'MH' => 'Maharashtra',
     'MN' => 'Manipur',
@@ -27,7 +22,6 @@ return [
     'MZ' => 'Mizoram',
     'NL' => 'Nagaland',
     'OR' => 'Orissa',
-    'PY' => 'Pondicherry',
     'PB' => 'Punjab',
     'RJ' => 'Rajasthan',
     'SK' => 'Sikkim',
@@ -37,4 +31,12 @@ return [
     'UP' => 'Uttar Pradesh',
     'UT' => 'Uttarakhand',
     'WB' => 'West Bengal',
+    // Union Territories.
+    'AN' => 'Andaman & Nicobar',
+    'CH' => 'Chandigarh',
+    'DN' => 'Dadra & Nagar Haveli',
+    'DD' => 'Daman & Diu',
+    'DL' => 'Delhi',
+    'LD' => 'Lakshadweep',
+    'PY' => 'Pondicherry',
 ];

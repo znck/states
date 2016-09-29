@@ -1,5 +1,4 @@
 <?php
-
 namespace Znck\States;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -49,7 +48,7 @@ class FileLoader
         $filename = "{$this->path}/{$locale}/{$country}.php";
         try {
             $loaded = $this->files->getRequire($filename);
-            if (!is_array($loaded)) {
+            if (! is_array($loaded)) {
                 throw new InvalidResourceException();
             }
 

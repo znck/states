@@ -1,5 +1,4 @@
 <?php
-
 namespace Znck\States;
 
 use DB;
@@ -76,7 +75,7 @@ class UpdateStatesCommand extends Command
         $this->countries = $config->get('states.countries');
         $this->states = $config->get('states.states');
 
-        if (!$this->files->isDirectory(dirname(storage_path(self::INSTALL_HISTORY)))) {
+        if (! $this->files->isDirectory(dirname(storage_path(self::INSTALL_HISTORY)))) {
             $this->files->makeDirectory(dirname(storage_path(self::INSTALL_HISTORY)), 0755, true);
         }
 
@@ -101,8 +100,8 @@ class UpdateStatesCommand extends Command
             $data = $this->loader->load($country, 'en');
             foreach ($data as $key => $name) {
                 $states[] = [
-                    'name' => $name,
-                    'code' => "${country} ${key}",
+                    'name'       => $name,
+                    'code'       => "${country} ${key}",
                     'country_id' => "${country}",
                 ];
             }
@@ -111,7 +110,7 @@ class UpdateStatesCommand extends Command
         $states = Collection::make($states);
         $hash = md5($states->toJson());
 
-        if (!$this->option('force') && $hash === $this->hash) {
+        if (! $this->option('force') && $hash === $this->hash) {
             $this->line('No new state.');
 
             return false;
