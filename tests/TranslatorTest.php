@@ -1,4 +1,6 @@
-<?php namespace Znck\Tests\States;
+<?php
+
+namespace Znck\Tests\States;
 
 use Illuminate\Filesystem\Filesystem;
 use Znck\States\FileLoader;

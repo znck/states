@@ -1,4 +1,6 @@
-<?php namespace Znck\States;
+<?php
+
+namespace Znck\States;
 
 use DB;
 use Illuminate\Console\Command;
@@ -57,7 +59,7 @@ class UpdateStatesCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param Filesystem $files
+     * @param Filesystem  $files
      * @param Application $app
      */
     public function __construct(Filesystem $files, Application $app)
@@ -111,6 +113,7 @@ class UpdateStatesCommand extends Command
 
         if (!$this->option('force') && $hash === $this->hash) {
             $this->line('No new state.');
+
             return false;
         }
 
@@ -124,7 +127,6 @@ class UpdateStatesCommand extends Command
 
             return $item;
         });
-
 
         $existingStateIDs = Collection::make(DB::table($this->states)->whereIn('code', $stateCodes)->pluck('id', 'code'));
         $states = $states->map(function ($item) use ($existingStateIDs) {

@@ -1,4 +1,6 @@
-<?php namespace Znck\States;
+<?php
+
+namespace Znck\States;
 
 /**
  * Class State.

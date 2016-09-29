@@ -1,4 +1,6 @@
-<?php namespace Znck\States;
+<?php
+
+namespace Znck\States;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
@@ -22,7 +24,7 @@ class FileLoader
      * FileLoader constructor.
      *
      * @param Filesystem $files
-     * @param string $path
+     * @param string     $path
      */
     public function __construct(Filesystem $files, string $path)
     {
@@ -34,7 +36,7 @@ class FileLoader
      * Loads a locale.
      *
      * @param string $country The domain
-     * @param string $locale A locale
+     * @param string $locale  A locale
      *
      * @throws NotFoundResourceException when the resource cannot be found
      * @throws InvalidResourceException  when the resource cannot be loaded
