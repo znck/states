@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01af13410410037cee8d277e7ee32834",
-    "content-hash": "c0492a5286f3f3a46d773912059df5a9",
+    "hash": "b3b21c4e8ef8c8e47e353bf73219cb38",
+    "content-hash": "ee1be3341bafefa481db11a739dd7873",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -555,6 +555,53 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "time": "2016-02-02 13:44:19"
+        },
+        {
+            "name": "znck/countries",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/znck/countries.git",
+                "reference": "a78a2b302dfa8eacab8fe0c06127dbb37fa98fd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/znck/countries/zipball/a78a2b302dfa8eacab8fe0c06127dbb37fa98fd3",
+                "reference": "a78a2b302dfa8eacab8fe0c06127dbb37fa98fd3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^5.2",
+                "illuminate/database": "^5.2",
+                "illuminate/support": "^5.2",
+                "php": "^7.0",
+                "symfony/translation": "^3.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.11",
+                "illuminate/filesystem": "^5.2",
+                "phpunit/php-code-coverage": "^3.1",
+                "phpunit/phpunit": "^5.2",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Znck\\Countries\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rahul Kadyan",
+                    "email": "hi@znck.me"
+                }
+            ],
+            "description": "A list of countries.",
+            "time": "2016-03-15 16:43:41"
         }
     ],
     "packages-dev": [

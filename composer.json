@@ -6,7 +6,8 @@
     "symfony/translation": "^3.0",
     "illuminate/console": "^5.2",
     "illuminate/database": "^5.2",
-    "illuminate/support": "^5.2"
+    "illuminate/support": "^5.2",
+    "znck/countries": "^0.1.1"
   },
   "require-dev": {
     "fabpot/php-cs-fixer": "^1.11",
